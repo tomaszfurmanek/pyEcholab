@@ -1013,8 +1013,9 @@ class SimradXMLParser(_SimradDatagramParser):
                 data['environment']['transducer_sound_speed'] = []
                 for h in root_node.iter('Transducer'):
                     transducer_xml = h.attrib
-                    data['environment']['transducer_name'].append(transducer_xml['TransducerName'])
-                    data['environment']['transducer_sound_speed'].append(float(transducer_xml['SoundSpeed']))
+                    if len(transducer_xml) >0:
+                        data['environment']['transducer_name'].append(transducer_xml['TransducerName'])
+                        data['environment']['transducer_sound_speed'].append(float(transducer_xml['SoundSpeed']))
 
         return data
 
